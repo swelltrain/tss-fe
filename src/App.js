@@ -1,12 +1,16 @@
 import React from 'react';
 import './App.css';
-import SearchForm from './SearchForm'
+import Navbar from "react-bootstrap/navbar";
+import SearchForm from './SearchForm';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <SearchForm />
+        <Navbar className="bg-light justify-content-between">
+          <Navbar.Brand href="#home">Twitch Stream Syndicate</Navbar.Brand>
+          <SearchForm />
+        </Navbar>
       </header>
     </div>
   );

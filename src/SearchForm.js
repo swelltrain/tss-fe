@@ -1,5 +1,7 @@
-import React from 'react'
-import axios from 'axios'
+import React from 'react';
+import axios from 'axios';
+import Button from 'react-bootstrap/button';
+import Form from 'react-bootstrap/form';
 
 class SearchForm extends React.Component {
   constructor(props) {
@@ -36,23 +38,30 @@ class SearchForm extends React.Component {
     event.preventDefault();
   }
 
+  clearInputs = (event) => {
+    this.setState({game: "", viewerMin: "", viewerMax: ""});
+    event.preventDefault();
+  }
+
   render () {
     return (
-      <form onSubmit={this.handleSubmit} >
-        <label>
-          Game
-          <input type="text" value={this.state.game} name="game" onChange={this.handleOnChange}/>
-        </label>
-        <label>
-          Viewer Min
-          <input type="text" value={this.state.viewerMin} name="viewerMin" onChange={this.handleOnChange}/>
-        </label>
-        <label>
-          Viewer Max
-          <input type="text" value={this.state.viewerMax} name="viewerMax" onChange={this.handleOnChange}/>
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+      <Form onSubmit={this.handleSubmit} inline >
+        <Form.Group controlId="game">
+          <Form.Label>Game</Form.Label>
+          <Form.Control type="text" value={this.state.game} name="game" onChange={this.handleOnChange}/>
+        </Form.Group>
+        <Form.Group controlId="viewerMin">
+          <Form.Label>Viewer Min</Form.Label>
+          <Form.Control type="text" value={this.state.viewerMin} name="viewerMin" onChange={this.handleOnChange}/>
+        </Form.Group>
+        <Form.Group controlId="viewerMax">
+          <Form.Label>Viewer Max</Form.Label>
+          <Form.Control type="text" value={this.state.viewerMax} name="viewerMax" onChange={this.handleOnChange}/>
+        </Form.Group>
+
+        <Button variant="primary">Submit</Button>
+        <Button variant="secondary" onClick={this.clearInputs}>Clear</Button>
+      </Form>
     );
   }
 }
