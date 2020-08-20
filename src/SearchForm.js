@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import Button from 'react-bootstrap/button';
 import Form from 'react-bootstrap/form';
 
@@ -21,20 +20,13 @@ class SearchForm extends React.Component {
   }
 
   handleSubmit = (event) => {
+    console.log("the fuck?");
     const game = this.state.game;
     const viewerMin = this.state.viewerMin;
     const viewerMax = this.state.viewerMax;
+    const params = {game: game, viewerMin: viewerMin, viewerMax: viewerMax}
 
-    axios.get("http://localhost:3030/api/search_current_streams", {
-      params: {
-        game: game, viewer_min: viewerMin, viewer_max: viewerMax
-      }
-    }).then(function (response) {
-      const data = response.data;
-      console.log(response.data);
-    }).catch(function (error) {
-      console.log("ERROR " + error);
-    })
+    this.props.handleBrowseSubmit(params);
     event.preventDefault();
   }
 
@@ -45,7 +37,7 @@ class SearchForm extends React.Component {
 
   render () {
     return (
-      <Form onSubmit={this.handleSubmit} inline >
+      <Form inline >
         <Form.Group controlId="game">
           <Form.Label>Game</Form.Label>
           <Form.Control type="text" value={this.state.game} name="game" onChange={this.handleOnChange}/>
@@ -59,7 +51,7 @@ class SearchForm extends React.Component {
           <Form.Control type="text" value={this.state.viewerMax} name="viewerMax" onChange={this.handleOnChange}/>
         </Form.Group>
 
-        <Button variant="primary">Submit</Button>
+        <Button variant="primary" onClick={this.handleSubmit}>Submit</Button>
         <Button variant="secondary" onClick={this.clearInputs}>Clear</Button>
       </Form>
     );
