@@ -20,7 +20,6 @@ class SearchForm extends React.Component {
   }
 
   handleSubmit = (event) => {
-    console.log("the fuck?");
     const game = this.state.game;
     const viewerMin = this.state.viewerMin;
     const viewerMax = this.state.viewerMax;
