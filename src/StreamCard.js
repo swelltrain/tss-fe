@@ -13,6 +13,12 @@ class StreamCard extends React.Component {
     };
   }
 
+  handleClick = (e) => {
+    const channel = e.target.getAttribute("data-channel");
+    this.props.handle_selected_stream(channel);
+    e.preventDefault();
+  }
+
   render() {
     return (
       <Card style={{ width: '18rem' }}>
@@ -22,7 +28,7 @@ class StreamCard extends React.Component {
           <Card.Text>
             {this.state.title}
           </Card.Text>
-          <Button variant="primary">View</Button>
+          <Button variant="primary" onClick={this.handleClick} data-channel={this.props.channel}>View</Button>
         </Card.Body>
       </Card>
     );

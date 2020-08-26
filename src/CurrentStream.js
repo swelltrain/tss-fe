@@ -6,6 +6,7 @@ function CurrentStream(props) {
   if (!props.channel) {
     return null;
   }
+
   return(
     <div>
       <TwitchPlayer
@@ -17,4 +18,7 @@ function CurrentStream(props) {
         channel={props.channel}
       />
     </div>
+  );
 }
+
+export default CurrentStream;

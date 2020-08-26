@@ -3,7 +3,8 @@ import axios from 'axios';
 import './App.css';
 import Navbar from "react-bootstrap/navbar";
 import SearchForm from './SearchForm';
-import StreamCardList from './StreamCardList';
+import CurrentStreamsContainer from './CurrentStreamsContainer';
+
 
 
 class App extends React.Component {
@@ -11,7 +12,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       current_streams: []
-    }
+    };
   }
 
   handleBrowseSubmit = (params) => {
@@ -20,9 +21,9 @@ class App extends React.Component {
         game: params.game, viewer_min: params.viewerMin, viewer_max: params.viewerMax
       }
     }).then((response) => {
-      const data = response.data;
-      this.setState({current_streams: data})
-      console.log(response.data);
+      const results = response.data;
+      this.setState({current_streams: results.data})
+      console.log(results.data);
     }).catch(function (error) {
       console.log("ERROR " + error);
     });
@@ -37,7 +38,7 @@ class App extends React.Component {
             <SearchForm handleBrowseSubmit={this.handleBrowseSubmit} />
           </Navbar>
         </header>
-        <StreamCardList streams={this.state.current_streams} />
+        <CurrentStreamsContainer current_streams={this.state.current_streams} />
       </div>
     );
   }
