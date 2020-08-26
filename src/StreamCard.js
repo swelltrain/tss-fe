@@ -13,6 +13,10 @@ class StreamCard extends React.Component {
     };
   }
 
+  handleClick = (e) => {
+    this.props.handle_selected_stream(e);
+  }
+
   render() {
     return (
       <Card style={{ width: '18rem' }}>
@@ -22,7 +26,7 @@ class StreamCard extends React.Component {
           <Card.Text>
             {this.state.title}
           </Card.Text>
-          <Button variant="primary">View</Button>
+          <Button variant="primary" onClick={this.handleClick}>View</Button>
         </Card.Body>
       </Card>
     );

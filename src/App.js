@@ -3,7 +3,8 @@ import axios from 'axios';
 import './App.css';
 import Navbar from "react-bootstrap/navbar";
 import SearchForm from './SearchForm';
-import StreamCardList from './StreamCardList';
+import CurrentStreamsContainer from './CurrentStreamsContainer';
+
 
 
 class App extends React.Component {
@@ -11,7 +12,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       current_streams: []
-    }
+    };
   }
 
   handleBrowseSubmit = (params) => {
@@ -37,7 +38,7 @@ class App extends React.Component {
             <SearchForm handleBrowseSubmit={this.handleBrowseSubmit} />
           </Navbar>
         </header>
-        <StreamCardList streams={this.state.current_streams} />
+        <CurrentStreamsContainer current_streams={this.state.current_streams} />
       </div>
     );
   }

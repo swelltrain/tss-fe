@@ -17,4 +17,7 @@ function CurrentStream(props) {
         channel={props.channel}
       />
     </div>
+  );
 }
+
+export default CurrentStream;
