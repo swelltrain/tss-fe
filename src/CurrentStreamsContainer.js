@@ -18,8 +18,8 @@ class CurrentStreamsContainer extends React.Component {
     return (
       <div>
         <StreamCardList
-          current_streams={this.props.current_streams}
-          handle_selected_stream={this.handleSelectedStream}
+          currentStreams={this.props.current_streams}
+          handleSelectedStream={this.handleSelectedStream}
         />
         <CurrentStream channel={this.state.chosenChannel} />
       </div>
