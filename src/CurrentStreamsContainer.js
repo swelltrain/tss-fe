@@ -6,14 +6,12 @@ class CurrentStreamsContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      chosen_channel: null
+      chosenChannel: null
     };
   }
 
   handleSelectedStream = (stream) => {
-    console.log("is this thing on?  " + stream + " stream")
-
-    this.setState({chosen_channel: stream});
+    this.setState({chosenChannel: stream});
   }
 
   render() {
@@ -23,7 +21,7 @@ class CurrentStreamsContainer extends React.Component {
           current_streams={this.props.current_streams}
           handle_selected_stream={this.handleSelectedStream}
         />
-        <CurrentStream channel={this.state.chosen_channel} />
+        <CurrentStream channel={this.state.chosenChannel} />
       </div>
     )
   }
